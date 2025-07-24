@@ -1,4 +1,4 @@
-import Quize from "../models/Quize.model.js";
+import Quize from "../models/quize.model.js";
 export const createQuizeController = async (req, res) => {
   const { title, questions } = req.body;
   const userId = req.userId; // From authentication middleware
