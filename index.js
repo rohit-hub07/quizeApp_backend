@@ -13,13 +13,13 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    // "https://myblogs-backend-91ie.onrender.com",
-    // "https://myblogs-backend-91ie.onrender.com/",
-    // "https://my-blogs-frontend.vercel.app",
+    "https://quize-app-frontend-t3vq.vercel.app",
+    "https://quizeapp-backend-3ma3.onrender.com",
+    "https://quizeapp-backend-3ma3.onrender.com/",
     "http://localhost:8000",
     "http://localhost:5173",
     "http://localhost:5174",
-    " http://localhost:5175",
+    "http://localhost:5175",
   ],
   credentials: true,
 };
