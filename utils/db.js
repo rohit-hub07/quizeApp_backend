@@ -3,9 +3,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// "mongodb://127.0.0.1:27017/quizeApp"
 export const db = async () => {
   const mongoUri =
-    process.env.MONGO_URI || "mongodb://127.0.0.1:27017/quizeApp";
+    process.env.MONGO_URI;
 
   mongoose
     .connect(mongoUri)
