@@ -108,12 +108,10 @@ export const verificationController = async (req, res) => {
     //   maxAge: 24 * 60 * 60 * 1000,
     // });
 
-    res.cookie("token", token, {
+    res.cookie("token", tkn, {
       httpOnly: true,
       secure: true,
       sameSite: "None",
-      domain: ".yourdomain.com", // Leading dot; allows sharing across subdomains
-      path: "/",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
@@ -168,12 +166,10 @@ export const loginController = async (req, res) => {
     //   maxAge: 24 * 60 * 60 * 1000,
     // });
 
-    res.cookie("token", token, {
+    res.cookie("token", tkn, {
       httpOnly: true,
       secure: true,
       sameSite: "None",
-      domain: ".yourdomain.com", // Leading dot; allows sharing across subdomains
-      path: "/",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
@@ -201,13 +197,11 @@ export const logoutController = async (req, res) => {
     //   maxAge: 24 * 60 * 60 * 1000,
     // });
 
-    res.cookie("token", token, {
+    res.cookie("token", " ", {
       httpOnly: true,
       secure: true,
       sameSite: "None",
-      domain: ".yourdomain.com", // Leading dot; allows sharing across subdomains
-      path: "/",
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
+      maxAge: 24 * 60 * 60 * 1000, 
     });
 
     res.status(200).json({
