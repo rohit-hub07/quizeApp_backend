@@ -13,18 +13,16 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    "https://quize-app-frontend-ruby.vercel.app/",
-    "https://quize-app-frontend-ruby.vercel.app",
-    "https://quizeapp-backend-3ma3.onrender.com",
+    "https://quize-app-frontend-t3vq.vercel.app/",
+    "https://quize-app-frontend-t3vq.vercel.app",
     "https://quizeapp-backend-3ma3.onrender.com/",
+    "https://quizeapp-backend-3ma3.onrender.com",
     "http://localhost:8000",
     "http://localhost:5173",
     "http://localhost:5174",
-    "http://localhost:5175",
+    " http://localhost:5175",
   ],
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
 };
 
 app.use(cors(corsOptions));
