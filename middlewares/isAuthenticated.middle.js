@@ -6,8 +6,34 @@ dotenv.config();
 
 export const isAuthenticated = async (req, res, next) => {
   try {
-    const token = req.cookies.token;
+    // Check for token in cookies first, then in Authorization header
+    let token = req.cookies?.token;
+
+    // If no token in cookies, check Authorization header
+    if (!token) {
+      const authHeader = req.headers.authorization;
+      if (authHeader && authHeader.startsWith("Bearer ")) {
+        token = authHeader.substring(7);
+      }
+    }
+
+    // If still no token found
+    if (!token) {
+      return res.status(401).json({
+        message: "No authentication token provided. Please login!",
+        success: false,
+      });
+    }
+
+    // Verify the token
     const decoded = jwt.verify(token, process.env.SECRET);
+
+    if (!decoded) {
+      return res.status(401).json({
+        message: "Invalid token. Please login again!",
+        success: false,
+      });
+    }
 
     // Get user to access role information
     const user = await User.findById(decoded.id);
@@ -22,9 +48,24 @@ export const isAuthenticated = async (req, res, next) => {
     req.userRole = user.role;
     next();
   } catch (error) {
-    console.log("error inside of auth middleware: ", error);
-    return res.status(401).json({
-      message: "Please login first!",
+    console.log("Error inside of auth middleware:", error.message);
+
+    if (error.name === "JsonWebTokenError") {
+      return res.status(401).json({
+        message: "Invalid token. Please login again!",
+        success: false,
+      });
+    }
+
+    if (error.name === "TokenExpiredError") {
+      return res.status(401).json({
+        message: "Token expired. Please login again!",
+        success: false,
+      });
+    }
+
+    return res.status(500).json({
+      message: "Authentication error. Please try again!",
       success: false,
     });
   }
