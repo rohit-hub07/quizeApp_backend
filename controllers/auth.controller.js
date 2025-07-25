@@ -104,6 +104,7 @@ export const verificationController = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production", // false in dev
       sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      domain: "quizeapp-backend-3ma3.onrender.com",
       maxAge: 24 * 60 * 60 * 1000,
     });
 
@@ -154,6 +155,7 @@ export const loginController = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production", // false in dev
       sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      domain: "quizeapp-backend-3ma3.onrender.com",
       maxAge: 24 * 60 * 60 * 1000,
     });
 
@@ -177,6 +179,7 @@ export const logoutController = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      domain: "quizeapp-backend-3ma3.onrender.com",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.status(200).json({
